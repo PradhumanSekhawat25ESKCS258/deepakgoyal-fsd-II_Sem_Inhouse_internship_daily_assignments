@@ -3,84 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
+    <title>Registraion form</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <table border="1" width="100%">
-    <tr>
-        <td>
-             <center>
-        <h1><strong>Pradhuman Sekhawat </strong></h1>
-        <img src="My logo.jpg" alt="My logo" height="300px" width="300px">
+    <div id="main">
+       <form action="">
+            <h2>Registraion From</h2>
 
-        <h4>Email :shekhawatpradhuman0@gmail.com</h4>
-        <h4>P.No. +91 769003864</h4>
-    </center>
+            <br>
+            <label for="">Full Name</label>
+            <br>
+            <input type="text" id="name" placeholder="Enter Full Name">
 
-    <hr>
+            <br><br>
+            <label for="">Email Address</label>
+            <br>
+            <input type="email" id="email" placeholder="Enter Email Address">
 
-    <h2>Skills :</h2>
-    <ol>
-        <li>C Programming</li>
-        <li>C++</li>
-        <li>Java</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>Basics of Javascript</li>
-    </ol>
+            <br><br>
+            <div id="box1">
+                    <div>
+                        <label for="">Phone Number</label>
+                        <!-- <br> -->
+                        <input type="tel" placeholder="Enter Phone NUmber ">
+                    </div>
 
-    <hr>
+               <div>
+                    <!-- <br><br> -->
+                    <label for="">Birth Date</label>
+                    <!-- <br> -->
+                    <input type="date">
+               </div>
+            </div>
 
-    <h2>Qualification</h2>
-    <table border="1">
-        <tr>
-            <th>School/University</th>
-            <th>Year</th>
-            <th>Percentge</th>
-        </tr>
-        <tr>
-            <td>12th</td>
-            <td>2024</td>
-            <td>79.80%</td>
-        </tr>
-        <tr>
-            <td>SKIT</td>
-            <td>Persuing</td>
-            <td>----</td>
-        </tr>
-    </table>
-    
-    <br>
-    <hr>
+            <br>
+            <p>Gender</p>
+            <label for="">Male</label>
+            <input type="radio" name="gender" id="male">
+            <label for="">Female</label>
+            <input type="radio" name="gender" id="female">
+            <label for="">Prefer not to say</label>
+            <input type="radio" name="gender" id="other">
 
-    <h2>Hobbies</h2>
-    <ul>
-        <li>Sports</li>
-        <li>Coding</li>
-    </ul>
+            <br><br>
+            <label for="">Address</label>
+            <br>
+            <input type="text" id="address" placeholder="Enter Street Address">
+            <br><br>
+            <input type="text" id="address" placeholder="Enter Street Address Line 2">
 
-    <hr>
+            <br><br>
+            <div id="countryAndCity">
+                <select name="" id="country">Country
+                <option value="">India</option>
+                <option value="">Bharat</option>
+                <option value="">Nepal</option>
+                </select>
+                
+                <input type="text" placeholder="Enter your city">
 
-    <h2>Contact Me</h2>
+            </div>
 
-    <ul>
-    <li>📞 <a>+91 7691003864</a></li>
-    <li>✉ <a>shekhawatpradhuman0@gmail.com</a></li>
-    <li>📍 Jaipur, Rajasthan, India</li>
-    </ul>
+            <br>
+            <div id="regionAndCode">
+                <input type="text" id="region" placeholder="Enter your region" >
+                <input type="text" id="code" placeholder="Enter Pin Code">
+            </div>
 
-<h2>Social Media</h2>
 
-<ul>
-    <li>💼 <a>LinkedIn</a></li>
-    <li>💻 <a>GitHub</a></li>
-    <li>🐦 <a>X (Twitter)</a></li>
-    <li>📸 <a>Instagram</a></li>
-</ul>
+            <br>    
+            <button type="submit" id="submit">SUBMIT</button>
 
-<!-- <hr> -->
-        </td>
-    </tr>
-   </table>
+
+       </form>
+    </div>
 </body>
 </html>
