@@ -1,85 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apple Banana Game</title>
-    <link rel="stylesheet" href="game.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Records</title>
 
-    <style>
-        body{
-            position: relative;
-            height:100vh;
-            margin:0;
-            overflow:hidden;
-            font-family:Arial, sans-serif;
-        }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        p{
-            font-size:22px;
-            margin:10px;
-        }
-
-        img{
-            width:100px;
-            position:absolute;
-            cursor:pointer;
-        }
-    </style>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
-<body>
+<body class="bg-light">
 
-<p>
-    Apple :
-    <span id="apple">0</span>
-</p>
+    <div class="container py-5">
 
-<p>
-    Banana :
-    <span id="banana">0</span>
-</p>
+        <h2 class="text-center mb-4">Student Records</h2>
 
-<img src="apple.jfif"
-     onclick="clickImage('apple',this)">
+        <input type="text" id="search" class="form-control mb-4" placeholder="Search Student">
 
-<img src="banana.jfif"
-     onclick="clickImage('banana',this)">
+        <div id="container" class="row g-3"></div>
+        <div id="json"></div>
 
-<script>
+    </div>
 
-let apple = 0;
-let banana = 0;
+    <script>
 
-// Initial Random Position
-document.querySelectorAll("img").forEach(img=>{
+        const students = [
+            { name: "Rahul", branch: "CSE", cgpa: 8.4 },
+            { name: "Santosh", branch: "CSE", cgpa: 7.4 },
+            { name: "Gullu", branch: "AI", cgpa: 2.0 },
+            { name: "Mallu", branch: "ME", cgpa: 7.0 },
+            { name: "Rohit", branch: "IT", cgpa: 9.0 },
+            { name: "Sumit", branch: "CSE", cgpa: 8.4 },
+            { name: "Shaurya", branch: "CSE", cgpa: 8.3 }
+        ];
 
-    img.style.left =
-    Math.random()*(window.innerWidth-100)+"px";
+        let html = "";
 
-    img.style.top =
-    Math.random()*(window.innerHeight-120)+"px";
+        for (let i = 0; i < students.length; i++) {
 
-});
+            html += `
+    <div class="col-md-4 card-item">
+        <div class="card shadow-sm">
+            <div class="card-body">
 
-function clickImage(type,img){
+                <h4>${students[i].name}</h4>
 
-    if(type=="apple"){
-        document.getElementById("apple").innerText = ++apple;
-    }
-    else{
-        document.getElementById("banana").innerText = ++banana;
-    }
+                <button class="btn btn-primary btn-sm mt-2">
+                    Show Details
+                </button>
 
-    // Move image to random position
-    img.style.left =
-    Math.random()*(window.innerWidth-100)+"px";
+                <div class="details mt-3" style="display:none;">
+                    <p><strong>Branch:</strong> ${students[i].branch}</p>
+                    <p><strong>CGPA:</strong> ${students[i].cgpa}</p>
+                </div>
 
-    img.style.top =
-    Math.random()*(window.innerHeight-120)+"px";
-}
+            </div>
+        </div>
+    </div>
+    `;
+        }
 
-</script>
+        $("#container").html(html);
+
+        // Show / Hide Details
+        $(document).on("click", ".btn", function () {
+
+            $(this).next(".details").slideToggle();
+
+            // if ($(this).text() === "Show Details") {
+            //     $(this).text("Hide Details");
+            // } else {
+            //     $(this).text("Show Details");
+            // }
+
+        });
+
+        // Search Student
+        $("#search").on("keyup", function () {
+
+            let value = $(this).val().toLowerCase();
+
+            $(".card-item").each(function () {
+                let name = $(this).find("h4").text().toLocaleLowerCase();
+
+                if (name.includes(value)) {
+                    $(this).show();
+                }
+                else {
+                    $(this).hide();
+                }
+
+                // $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+
+            });
+
+
+        });
+
+        document.getElementById("json").innerHTML = JSON.stringify(students,["name","cgpa"],4);
+
+        function replace(key, value){
+            if(key == "cgpa") return undefined;
+            
+            return value;
+        }
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
